@@ -10,15 +10,15 @@ public class Cinema {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cinemaId;
-    private int rows;
+    private int numberOfRows;
     private int seatsPerRow;
 
-    public int getRows() {
-        return rows;
+    public int getnumberOfRows() {
+        return numberOfRows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public void setnumberOfRows(int rows) {
+        this.numberOfRows = rows;
     }
 
     public Integer getCinemaId() {

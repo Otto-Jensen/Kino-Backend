@@ -4,6 +4,16 @@ import jakarta.persistence.*;
 
 @Entity
 public class Seat {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer seatId;
+    private int cinemaRow;
+    private int seatNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "cinema_id")
+    private Cinema cinema;
+
     public Integer getSeatId() {
         return seatId;
     }
@@ -28,21 +38,14 @@ public class Seat {
         this.seatNumber = seatNumber;
     }
 
-    public int getRowNumber() {
-        return rowNumber;
+    public int getCinemaRow() {
+        return cinemaRow;
     }
 
-    public void setRowNumber(int rowNumber) {
-        this.rowNumber = rowNumber;
+    public void setcinemaRow(int cinemaRow) {
+        this.cinemaRow = cinemaRow;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer seatId;
-    private int rowNumber;
-    private int seatNumber;
-
-    @ManyToOne
-    @JoinColumn(name="cinema_id")
-    private Cinema cinema;
 }
+
+
