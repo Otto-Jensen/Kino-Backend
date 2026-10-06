@@ -13,12 +13,12 @@ public class initData implements CommandLineRunner {
     MovieRepository movieRepository;
 
     @Override
-    public void run (String... args){
-        if (movieRepository.count()==0){
+    public void run(String... args) {
+        if (movieRepository.count() == 0) {
             Movie movie1 = new Movie();
             movie1.setName("Dalans dadler");
             movie1.setGenre("Erotik");
-            movie1.setDescription("Dalan bruger hans sidste penge på dadler efter han tabte dem alle ved at gamble. Men tilsyndeladende er der mere til disse dadler en som lige møder øjet");
+            movie1.setDescription("Dalan bruger hans sidste penge på dadler efter han tabte dem alle ved at gamble. Men tilsyndeladende er der mere til disse dadler end som lige møder øjet");
             movie1.setAgeLimit(18);
 
             Movie movie2 = new Movie();
