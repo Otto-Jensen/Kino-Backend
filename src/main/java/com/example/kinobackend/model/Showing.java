@@ -6,6 +6,21 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Showing {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer showingId;
+    private LocalDateTime dateTime;
+
+    @ManyToOne
+    @JoinColumn(name="cinema_id")
+    private Cinema cinema;
+
+    @ManyToOne
+    @JoinColumn(name="movie_id")
+    private Movie movie;
+
+
     public Integer getShowingId() {
         return showingId;
     }
@@ -38,18 +53,6 @@ public class Showing {
         this.dateTime = dateTime;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer showingId;
-    private LocalDateTime dateTime;
-
-    @ManyToOne
-    @JoinColumn(name="cinema_id")
-    private Cinema cinema;
-
-    @ManyToOne
-    @JoinColumn(name="movie_id")
-    private Movie movie;
 
 
 
