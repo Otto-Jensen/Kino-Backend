@@ -20,4 +20,9 @@ public class ShowingRestController {
     public List<Showing> getShowingByMovieId(@PathVariable Integer movieId){
         return showingService.getShowingByMovieId(movieId);
     }
+
+    @DeleteMapping("/{showingId}")
+    public void deleteShowing(@PathVariable Integer showingId){
+        showingService.deleteShowing(showingId);
+    }
 }
