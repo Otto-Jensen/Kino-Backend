@@ -21,4 +21,9 @@ public Movie getMovieById(Integer id){
         return movieRepository.findById(id).orElse(null);
 }
 
+public Movie createMovie (Movie movie){
+        return movieRepository.save(movie);
+}
+
+
 }

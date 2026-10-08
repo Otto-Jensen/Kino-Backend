@@ -26,4 +26,9 @@ public class MovieRestController {
     public Movie getMovieById(@PathVariable Integer id){
         return movieService.getMovieById(id);
     }
+
+    @PostMapping
+    public Movie createMovie(@RequestBody Movie movie){
+        return movieService.createMovie(movie);
+    }
 }
