@@ -1,9 +1,9 @@
 package com.example.kinobackend.service;
 
-import com.example.kinobackend.model.Seat;
 import com.example.kinobackend.model.Showing;
-import com.example.kinobackend.repositories.SeatRepository;
 import com.example.kinobackend.repositories.ShowingRepository;
+import com.example.kinobackend.model.Seat;
+import com.example.kinobackend.repositories.SeatRepository;
 import com.example.kinobackend.repositories.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,34 +22,28 @@ public class ShowingService {
     @Autowired
     TicketRepository ticketRepository;
 
+    public List<Showing> getShowingByMovieId(Integer movieId) {
+        return showingRepository.findByMovieMovieId(movieId);
+    }
+
     public Showing getShowingById(Integer showingId) {
         return showingRepository.findById(showingId).orElse(null);
     }
 
-    public Integer getCinemaIdForShowing(Integer showingId) {
-
-        Showing showing = showingRepository.findById(showingId).orElse(null);
-
-        if (showing == null) {
-            return null;
-        }
-
-        return showing.getCinema().getCinemaId();
-    }
 
     public List<Seat> getSeatsForShowing(Integer showingId) {
+        Showing showing = showingRepository.findById(showingId).orElse(null);
 
-        Integer cinemaId = getCinemaIdForShowing(showingId);
-
-        if (cinemaId == null) {
+        if (showing == null || showing.getCinema() == null) {
             return List.of();
         }
+
+        Integer cinemaId = showing.getCinema().getCinemaId();
 
         return seatRepository.findByCinema_CinemaId(cinemaId);
     }
 
     public List<Seat> getAvailableSeatsForShowing(Integer showingId) {
-
         List<Seat> allSeats = getSeatsForShowing(showingId);
 
         List<Integer> occupiedSeatIds = ticketRepository
