@@ -34,4 +34,9 @@ public class ShowingRestController {
         showingService.deleteShowing(showingId);
     }
 
+    @PostMapping
+    public Showing createShowing(@RequestBody Showing showing){
+        return showingService.createShowing(showing);
+    }
+
 }

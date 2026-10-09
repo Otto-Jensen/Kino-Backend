@@ -7,6 +7,7 @@ import com.example.kinobackend.repositories.SeatRepository;
 import com.example.kinobackend.repositories.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -61,5 +62,8 @@ public class ShowingService {
         showingRepository.deleteById(showingId);
     }
 
+    public Showing createShowing(Showing showing){
+        return showingRepository.save(showing);
+    }
 
 }
