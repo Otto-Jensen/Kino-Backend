@@ -1,3 +1,4 @@
+
 package com.example.kinobackend.service;
 
 import com.example.kinobackend.model.Movie;
@@ -13,17 +14,15 @@ public class MovieService {
     @Autowired
     MovieRepository movieRepository;
 
-    public List<Movie> getAllMovies(){
+    public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
 
-public Movie getMovieById(Integer id){
-        return movieRepository.findById(id).orElse(null);
-}
+    public Movie getMovieById(Integer movieId) {
+        return movieRepository.findById(movieId).orElse(null);
+    }
 
-public Movie createMovie (Movie movie){
+    public Movie createMovie (Movie movie){
         return movieRepository.save(movie);
-}
-
-
+    }
 }

@@ -1,9 +1,9 @@
 package com.example.kinobackend.service;
 
-import com.example.kinobackend.model.Showing;
-import com.example.kinobackend.repositories.ShowingRepository;
 import com.example.kinobackend.model.Seat;
+import com.example.kinobackend.model.Showing;
 import com.example.kinobackend.repositories.SeatRepository;
+import com.example.kinobackend.repositories.ShowingRepository;
 import com.example.kinobackend.repositories.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,30 +11,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ShowingService {
-
-    @Autowired
-    ShowingRepository showingRepository;
+public class SeatService {
 
     @Autowired
     SeatRepository seatRepository;
 
     @Autowired
+    ShowingRepository showingRepository;
+
+    @Autowired
     TicketRepository ticketRepository;
-
-    public List<Showing> getShowingByMovieId(Integer movieId) {
-        return showingRepository.findByMovieMovieId(movieId);
-    }
-
-    public Showing getShowingById(Integer showingId) {
-        return showingRepository.findById(showingId).orElse(null);
-    }
-
 
     public List<Seat> getSeatsForShowing(Integer showingId) {
         Showing showing = showingRepository.findById(showingId).orElse(null);
 
-        if (showing == null || showing.getCinema() == null) {
+        if (showing == null) {
             return List.of();
         }
 
@@ -56,10 +47,4 @@ public class ShowingService {
                 .filter(seat -> !occupiedSeatIds.contains(seat.getSeatId()))
                 .toList();
     }
-
-    public void deleteShowing(Integer showingId){
-        showingRepository.deleteById(showingId);
-    }
-
-
 }
