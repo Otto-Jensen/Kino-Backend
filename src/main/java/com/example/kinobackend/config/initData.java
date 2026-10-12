@@ -41,7 +41,7 @@ public class initData implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        // 1. Create customer
+
         if (customerRepository.count() == 0) {
 
             Customer customer = new Customer();
@@ -52,7 +52,7 @@ public class initData implements CommandLineRunner {
             customerRepository.save(customer);
         }
 
-        // 2. Create movies
+
         if (movieRepository.count() == 0) {
 
             Movie movie1 = new Movie();
@@ -76,23 +76,23 @@ public class initData implements CommandLineRunner {
             movieRepository.save(movie2);
         }
 
-        // 3. Create cinema halls
+
         if (cinemaRepository.count() == 0) {
 
-            // Cinema 1: 20 rows, 12 seats per row
+
             Cinema cinema1 = new Cinema();
             cinema1.setnumberOfRows(20);
             cinema1.setSeatsPerRow(12);
             cinema1 = cinemaRepository.save(cinema1);
 
-            // Cinema 2: 25 rows, 16 seats per row
+
             Cinema cinema2 = new Cinema();
             cinema2.setnumberOfRows(25);
             cinema2.setSeatsPerRow(16);
             cinema2 = cinemaRepository.save(cinema2);
         }
 
-        // 4. Create seats for each cinema
+
         if (seatRepository.count() == 0) {
 
             List<Cinema> cinemas = cinemaRepository.findAll();
