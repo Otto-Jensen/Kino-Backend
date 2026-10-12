@@ -116,7 +116,7 @@ public class initData implements CommandLineRunner {
             }
         }
 
-
+        // 5. Create showings
         if (showingRepository.count() == 0) {
 
             Movie movie = movieRepository.findAll().get(0);
